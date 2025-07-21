@@ -66,7 +66,6 @@ describe('PostsListPage', () => {
   it('retries fetching when try again button is clicked', async () => {
     mockPostsService.getAllPosts.mockRejectedValueOnce(new Error('API Error'));
     renderWithRouter(<PostsListPage />);
-
     await waitFor(() => {
       expect(screen.getByText('Try Again')).toBeInTheDocument();
     });

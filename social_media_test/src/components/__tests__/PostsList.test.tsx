@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { render, screen, fireEvent, act } from '@testing-library/react';
+=======
+import { render, screen, fireEvent } from '@testing-library/react';
+>>>>>>> Initial baseline commit for rails and vite app
 import { describe, it, expect, vi } from 'vitest';
 import { PostsList } from '../PostsList';
 import { mockPosts } from '../../test/mocks';
@@ -27,9 +31,13 @@ describe('PostsList', () => {
     
     const firstPost = screen.getByText('First Test Post').closest('div');
     if (firstPost) {
+<<<<<<< HEAD
       act(() => {
         fireEvent.click(firstPost);
       });
+=======
+      fireEvent.click(firstPost);
+>>>>>>> Initial baseline commit for rails and vite app
       expect(mockOnPostClick).toHaveBeenCalledWith(1);
     }
   });
