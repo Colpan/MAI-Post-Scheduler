@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import type { Post } from '../types/posts';
-import { postsService } from '../services/api';
+import { postsService } from '../services/postsService';
 import { PostDetail } from '../components/PostDetail';
 
 export const PostDetailPage = () => {
@@ -36,7 +36,7 @@ export const PostDetailPage = () => {
       <div className="mx-auto">
         <button
           onClick={handleBack}
-          className="mb-6 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+          className="mb-6 px-4 py-2 bg-gray-800 rounded-lg"
         >
           Back to Posts
         </button>
@@ -45,7 +45,7 @@ export const PostDetailPage = () => {
           <p className="text-red-800">{error}</p>
           <button
             onClick={() => id && fetchPost(parseInt(id, 10))}
-            className="mt-2 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
+            className="mt-2 px-4 py-2 bg-red-800 text-white rounded"
           >
             Try Again
           </button>
@@ -59,7 +59,7 @@ export const PostDetailPage = () => {
       <div className="mx-auto">
         <button
           onClick={handleBack}
-          className="mb-6 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+          className="mb-6 px-4 py-2 bg-gray-800 rounded-lg"
         >
           Back to Posts
         </button>

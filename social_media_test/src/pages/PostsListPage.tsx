@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { Post } from '../types/posts';
-import { postsService } from '../services/api';
+import { postsService } from '../services/postsService';
 import { PostsList } from '../components/PostsList';
 
 export const PostsListPage = () => {
@@ -28,20 +28,22 @@ export const PostsListPage = () => {
     navigate(`/posts/${postId}`);
   };
 
+  if (error) {
+    return (
+      <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+        <p className="text-red-800">{error}</p>
+        <button
+          onClick={fetchPosts}
+          className="mt-2 px-4 py-2 bg-red-800 text-white rounded"
+        >
+          Try Again
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div>
-      {error && (
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
-          <p className="text-red-800">{error}</p>
-          <button
-            onClick={fetchPosts}
-            className="mt-2 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
-          >
-            Try Again
-          </button>
-        </div>
-      )}
-      
       <PostsList posts={posts} onPostClick={handlePostClick} />
     </div>
   );

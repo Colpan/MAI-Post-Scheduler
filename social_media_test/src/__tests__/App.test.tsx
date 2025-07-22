@@ -2,11 +2,11 @@ import { render, screen, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
 import App from '../App';
-import { postsService } from '../services/api';
+import { postsService } from '../services/postsService';
 import { mockPosts, mockPost } from '../test/mocks';
 
 // Mock the postsService
-vi.mock('../services/api');
+vi.mock('../services/postsService');
 const mockPostsService = vi.mocked(postsService);
 
 const renderWithRouter = (component: React.ReactElement, initialEntries: string[] = ['/']) => {

@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import axios from 'axios';
-import { postsService } from '../api';
+import { postsService } from '../postsService';
 import { mockPosts, mockPost } from '../../test/mocks';
 
 // Mock axios
