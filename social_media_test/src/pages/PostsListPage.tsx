@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { Post } from '../types/posts';
-import { postsService } from '../services/api';
+import { postsService } from '../services/postsService';
 import { PostsList } from '../components/PostsList';
 
 export const PostsListPage = () => {

@@ -30,6 +30,15 @@ export const PostsList: React.FC<PostsListProps> = ({ posts, onPostClick }) => {
             className="border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-lg transition-shadow cursor-pointer"
             onClick={() => post.id && onPostClick(post.id)}
           >
+            <div className="flex items-center mb-2">
+              {post.photos?.map((photo, _) => (
+                <img
+                  src={photo.photo_url}
+                  alt={photo.caption}
+                  className="h-auto mx-2 max-w-3xs"
+                />
+              ))}
+            </div>
             <h3 className="text-lg font-semibold mb-2">{post.title}</h3>
             <p className="mb-3">{post.post_text}</p>
             <div className="text-sm text-gray-500">

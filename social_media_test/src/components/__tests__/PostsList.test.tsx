@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { render, screen, fireEvent, act } from '@testing-library/react';
-=======
-import { render, screen, fireEvent } from '@testing-library/react';
->>>>>>> Initial baseline commit for rails and vite app
 import { describe, it, expect, vi } from 'vitest';
 import { PostsList } from '../PostsList';
 import { mockPosts } from '../../test/mocks';
@@ -18,11 +14,16 @@ describe('PostsList', () => {
     expect(screen.getByText('Third Test Post')).toBeInTheDocument();
   });
 
-  it('displays post text', () => {
+  it('displays post text and images', () => {
     const mockOnPostClick = vi.fn();
     render(<PostsList posts={mockPosts} onPostClick={mockOnPostClick} />);
-    
+
     expect(screen.getByText('This is the content of the first test post. It should be displayed properly in the list.')).toBeInTheDocument();
+    const images = screen.getAllByRole('img');
+    expect(images).toHaveLength(3);
+    expect(images[0]).toHaveAttribute('src', 'https://example.com/photo1.jpg');
+    expect(images[1]).toHaveAttribute('src', 'https://example.com/photo2.jpg');
+    expect(images[2]).toHaveAttribute('src', 'https://example.com/photo3.jpg');
   });
 
   it('calls onPostClick when a post is clicked', () => {
@@ -31,13 +32,9 @@ describe('PostsList', () => {
     
     const firstPost = screen.getByText('First Test Post').closest('div');
     if (firstPost) {
-<<<<<<< HEAD
       act(() => {
         fireEvent.click(firstPost);
       });
-=======
-      fireEvent.click(firstPost);
->>>>>>> Initial baseline commit for rails and vite app
       expect(mockOnPostClick).toHaveBeenCalledWith(1);
     }
   });

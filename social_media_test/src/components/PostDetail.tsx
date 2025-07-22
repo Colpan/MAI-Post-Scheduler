@@ -34,6 +34,16 @@ export const PostDetail: React.FC<PostDetailProps> = ({ post, onBack }) => {
             {post.post_text}
           </p>
         </div>
+
+        <div className="flex flex-wrap items-center mb-2">
+          {post.photos?.map((photo, _) => (
+            <img
+              src={photo.photo_url}
+              alt={photo.caption}
+              className="h-auto mx-2 my-5 max-w-lg"
+            />
+          ))}
+        </div>
       </article>
     </div>
   );
