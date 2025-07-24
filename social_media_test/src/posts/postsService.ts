@@ -22,5 +22,35 @@ export const postsService = {
       console.error('Error fetching post:', error);
       throw error;
     }
+  },
+
+  createPost: async (post: Omit<Post,'id'>): Promise<Post> => {
+    try {
+      const response = await axios.post<Post>(`${API_BASE_URL}/posts`, {post: post});
+      return response.data;
+    } catch (error) {
+      console.error('Error create post:', error);
+      throw error;
+    }
+  },
+
+  updatePost: async (post: Post): Promise<Post> => {
+    try {
+      const response = await axios.patch<Post>(`${API_BASE_URL}/posts/${post.id}`, {post: post});
+      return response.data;
+    } catch (error) {
+      console.error('Error update post:', error);
+      throw error;
+    }
+  },
+
+  rewriteContent: async (id: number): Promise<Post> => {
+    try {
+      const response = await axios.patch<Post>(`${API_BASE_URL}/posts/${id}/rewrite`);
+      return response.data;
+    } catch (error) {
+      console.error('Error rewrite post:', error);
+      throw error;
+    }
   }
 };

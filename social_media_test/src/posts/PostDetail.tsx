@@ -3,10 +3,9 @@ import type { Post } from './posts';
 
 interface PostDetailProps {
   post: Post;
-  onBack: () => void;
 }
 
-export const PostDetail: React.FC<PostDetailProps> = ({ post, onBack }) => {
+export const PostDetail: React.FC<PostDetailProps> = ({ post }) => {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
@@ -14,13 +13,6 @@ export const PostDetail: React.FC<PostDetailProps> = ({ post, onBack }) => {
 
   return (
     <div>
-      <button
-        onClick={onBack}
-        className="mb-6 px-4 py-2 bg-gray-800 rounded-lg"
-      >
-        Back to Posts
-      </button>
-      
       <div className="bg-white rounded-lg p-6 text-gray-800">
         <header className="mb-6">
           <h1 className="text-2xl font-bold mb-4">{post.title}</h1>

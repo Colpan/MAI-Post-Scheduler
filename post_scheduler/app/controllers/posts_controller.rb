@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show]
+  before_action :set_post, only: [:show, :rewrite]
 
   # GET /posts
   def index
@@ -11,6 +11,10 @@ class PostsController < ApplicationController
   # GET /posts/1
   def show
     render json: @post.json_serialize
+  end
+
+  def rewrite
+    render json: @post, status: :ok
   end
 
   private

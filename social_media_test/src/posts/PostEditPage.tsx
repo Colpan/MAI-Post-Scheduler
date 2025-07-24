@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import type { Post } from './posts';
 import { postsService } from './postsService';
-import { PostDetail } from './PostDetail';
+import { PostForm } from './PostForm';
 
-export const PostDetailPage = () => {
+export const PostEditPage = () => {
   const [post, setPost] = useState<Post | null>(null);
   const [error, setError] = useState<string | null>(null);
   const { id } = useParams<{ id: string }>();
@@ -28,12 +28,8 @@ export const PostDetailPage = () => {
   };
 
   const handleBack = () => {
-    navigate('/');
+    navigate(`/posts/${id}`);
   };
-
-  const goToEdit = () => {
-    navigate(`/posts/${post.id}/edit`);
-  }
 
   if (error) {
     return (
@@ -42,7 +38,7 @@ export const PostDetailPage = () => {
           onClick={handleBack}
           className="mb-6 px-4 py-2 bg-gray-800 rounded-lg"
         >
-          Back to Posts
+          Back
         </button>
         
         <div className="bg-red-50 border border-red-200 rounded-lg p-4">
@@ -65,7 +61,7 @@ export const PostDetailPage = () => {
           onClick={handleBack}
           className="mb-6 px-4 py-2 bg-gray-800 rounded-lg"
         >
-          Back to Posts
+          Back
         </button>
         <p className="text-gray-600">Post not found.</p>
       </div>
@@ -74,22 +70,16 @@ export const PostDetailPage = () => {
 
   return (
     <div>
-      <div className="flex">
+      <div>
         <button
           onClick={handleBack}
-          className="mb-6 mr-6 px-4 py-2 bg-gray-800 rounded-lg"
-        >
-          Back to Posts
-        </button>
-        <button
-          onClick={goToEdit}
           className="mb-6 px-4 py-2 bg-gray-800 rounded-lg"
         >
-          Edit Post
+          Back
         </button>
       </div>
 
-      <PostDetail post={post} />
+      <PostForm post={post} />;
     </div>
   );
 };

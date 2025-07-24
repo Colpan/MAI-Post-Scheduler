@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { PostsListPage } from './posts/PostsListPage';
 import { PostDetailPage } from './posts/PostDetailPage';
+import { PostEditPage } from './posts/PostEditPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import './App.css';
 
@@ -11,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<PostsListPage />} />
           <Route path="/posts/:id" element={<PostDetailPage />} />
+          <Route path="/posts/:id/edit" element={<PostEditPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
