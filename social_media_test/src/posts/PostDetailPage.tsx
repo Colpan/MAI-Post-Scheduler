@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import type { Post } from '../types/posts';
-import { postsService } from '../services/postsService';
-import { PostDetail } from '../components/PostDetail';
+import type { Post } from './posts';
+import { postsService } from './postsService';
+import { PostDetail } from './PostDetail';
 
 export const PostDetailPage = () => {
   const [post, setPost] = useState<Post | null>(null);

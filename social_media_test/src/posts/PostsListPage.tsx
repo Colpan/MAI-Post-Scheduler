@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import type { Post } from '../types/posts';
-import { postsService } from '../services/postsService';
-import { PostsList } from '../components/PostsList';
+import type { Post } from './posts';
+import { postsService } from './postsService';
+import { PostsList } from './PostsList';
 
 export const PostsListPage = () => {
   const [posts, setPosts] = useState<Post[]>([]);

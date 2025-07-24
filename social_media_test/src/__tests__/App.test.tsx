@@ -2,7 +2,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
 import App from '../App';
-import { postsService } from '../services/postsService';
+import { postsService } from '../posts/postsService';
 import { mockPosts, mockPost } from '../test/mocks';
 
 // Mock the postsService

@@ -1,4 +1,4 @@
-import type { Photo } from "./photos";
+import type { Photo } from "../photos/photos";
 
 export interface Post {
   id?: number;
