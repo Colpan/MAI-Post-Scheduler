@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { Post } from '../types/posts';
+import type { Post } from './posts';
 
 const API_BASE_URL = 'http://localhost:3000';
 

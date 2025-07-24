@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Post } from '../types/posts';
+import type { Post } from './posts';
 
 interface PostsListProps {
   posts: Post[];

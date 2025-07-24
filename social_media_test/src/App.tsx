@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-import { PostsListPage } from './pages/PostsListPage';
-import { PostDetailPage } from './pages/PostDetailPage';
+import { PostsListPage } from './posts/PostsListPage';
+import { PostDetailPage } from './posts/PostDetailPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import './App.css';
 

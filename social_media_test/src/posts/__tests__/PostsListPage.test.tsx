@@ -2,11 +2,11 @@ import { render, screen, fireEvent, waitFor, act } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { BrowserRouter } from 'react-router-dom';
 import { PostsListPage } from '../PostsListPage';
-import { postsService } from '../../services/postsService';
+import { postsService } from '../postsService';
 import { mockPosts } from '../../test/mocks';
 
 // Mock the postsService
-vi.mock('../../services/postsService');
+vi.mock('../postsService');
 const mockPostsService = vi.mocked(postsService);
 
 // Mock react-router-dom navigate
