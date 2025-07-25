@@ -1,4 +1,5 @@
 import type React from 'react';
+import { useNavigate } from 'react-router-dom';
 import type { Post } from './posts';
 import { postsService } from './postsService';
 
@@ -7,9 +8,9 @@ interface PostFormProperties {
 }
 
 export const PostForm: React.FC<PostFormProperties> = ({post}) => {
+  const navigate = useNavigate();
 
   const formatDate = (dateString: string) => {
-    console.log('Formatting date:', dateString);
     const date = new Date(dateString);
     return (date.toLocaleDateString('en-CA', {year: 'numeric', month: '2-digit', day: '2-digit'}) + 'T' + date.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})).slice(0, 16);
   };
@@ -25,9 +26,9 @@ export const PostForm: React.FC<PostFormProperties> = ({post}) => {
 
     const newPost: Post = {
       id: post ? post.id : undefined,
-      title: formData.get('post[title]') as string,
-      post_text: formData.get('post[post_text]') as string,
-      scheduled_date: formatSubmissionDate(formData.get('post[scheduled_date]') as string)
+      title: formData.get('title') as string,
+      post_text: formData.get('post_text') as string,
+      scheduled_date: formatSubmissionDate(formData.get('scheduled_date') as string)
     }
 
     if (post) {
@@ -35,6 +36,8 @@ export const PostForm: React.FC<PostFormProperties> = ({post}) => {
     } else {
       postsService.createPost(newPost);
     }
+
+    navigate(`/`);
   }
 
   const handleRewrite = () => {
@@ -54,7 +57,7 @@ export const PostForm: React.FC<PostFormProperties> = ({post}) => {
             id="title"
             type="text"
             name="title"
-            value={post ? post.title : ''}
+            defaultValue={post ? post.title : ''}
             className="w-full border"
           />
         </div>
@@ -63,7 +66,7 @@ export const PostForm: React.FC<PostFormProperties> = ({post}) => {
           <textarea
             id="content"
             name="post_text"
-            value={post ? post.post_text : ''}
+            defaultValue={post ? post.post_text : ''}
             className="w-full border"
           />
         </div>
@@ -71,8 +74,9 @@ export const PostForm: React.FC<PostFormProperties> = ({post}) => {
           <label htmlFor="scheduled_date" className="block mb-2">Scheduled Date</label>
           <input
             id="scheduled_date"
+            name="scheduled_date"
             type="datetime-local"
-            value={post ? formatDate(post.scheduled_date) : ''}
+            defaultValue={post ? formatDate(post.scheduled_date) : ''}
             className="w-full border"
           />
         </div>

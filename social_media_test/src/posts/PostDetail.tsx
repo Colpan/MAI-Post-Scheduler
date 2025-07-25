@@ -30,6 +30,7 @@ export const PostDetail: React.FC<PostDetailProps> = ({ post }) => {
         <div className="flex flex-wrap items-center mb-2">
           {post.photos?.map((photo, _) => (
             <img
+              key={photo.photo_url}
               src={photo.photo_url}
               alt={photo.caption}
               className="h-auto mx-2 my-5 max-w-lg"

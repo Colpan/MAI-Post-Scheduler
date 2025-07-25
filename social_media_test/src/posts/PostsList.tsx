@@ -33,6 +33,7 @@ export const PostsList: React.FC<PostsListProps> = ({ posts, onPostClick }) => {
             <div className="flex items-center mb-2">
               {post.photos?.map((photo, _) => (
                 <img
+                  key={photo.photo_url}
                   src={photo.photo_url}
                   alt={photo.caption}
                   className="h-auto mx-2 max-w-3xs"
